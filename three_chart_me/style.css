@@ -65,8 +65,22 @@ button {
     border-radius: 4px;
 }
 
+select {
+    outline: none;
+}
+
 .y-axis {
     display: inline-block;
     transform: translate(-230px, 250px) rotate(-90deg);
     text-transform: uppercase;
+}
+
+.average {
+    position: absolute;
+    transform: translateY(328px);
+}
+
+div.average h1 {
+    font-size: 16px;
+    margin: 0;
 }

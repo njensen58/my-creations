@@ -3,6 +3,7 @@
 const userInput = document.getElementById('user-input');
 const graphType = document.getElementById('graph-type');
 const submitBtn = document.getElementById('form-submit');
+const avgSpan = document.getElementById('avg-span');
 
 const canvas = document.getElementById('my-canvas');
 const xCanvas = document.getElementById('my-text-canvas');
@@ -10,6 +11,7 @@ const ctx = canvas.getContext('2d');
 const textCtx = xCanvas.getContext('2d');
 
 const userData = [];
+let avgOfUserData;
 let prevGraphType = 'bar';
 
 
@@ -33,7 +35,7 @@ const xAxisText = () => {
     }
 }
 
-
+const calculateAvg = arr => arr.reduce((final, num) => final += Number(num), 0) / arr.length;
 
 // Chart as bar graph
 const barGraph = () => {
@@ -46,8 +48,6 @@ const barGraph = () => {
     for(let i = 0; i < userData.length; i++){
         let h = userData[i];
         let y = canvas.height - h;
-
-
 
         ctx.fillStyle = 'cornflowerblue';
         ctx.fillRect(currentX, y, width, h)
@@ -122,14 +122,18 @@ const userSubmit = () => {
                     userData.push(userInput.value);
                     xAxisText();
                     userInput.value = '';
+                    avgOfUserData = calculateAvg(userData).toFixed(2);
+                    avgSpan.textContent = avgOfUserData;
                 } else {
                     alert('Enter a number between 0 - 500')
                 }
             } else {
                     // Do nothing since the user just change categories and on change was triggered.
             }
-        } else {
+        } else if(userInput.value !== ''){
             alert('Maximum Entries Reached')
+        } else {
+            // do nothing
         }
         if(graphType.value === 'bar'){ barGraph() }
         if(graphType.value === 'dot'){ dotGraph() }
