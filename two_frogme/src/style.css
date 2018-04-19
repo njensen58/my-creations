@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.gameContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.gameBoard {
+    display: grid;
+    grid-template-rows: repeat(10, 50px);
+    grid-template-columns: repeat(5, 1fr);
+    height: 500px;
+    background-color: tan;
+    position: relative;
+}
+
+.crab {
+    height: 50px;
+    width: 50px;
+    background-image: url('resources/Crab.png');
+    background-size: 1200%;
+    background-position: -10px -26px;
+    animation: crab-walk steps(9) 1s infinite;
+}
+
+@keyframes crab-walk {
+    from{background-position: -10px -26px}
+    to{background-position: 2990px -26px}
+}
