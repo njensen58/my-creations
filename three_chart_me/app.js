@@ -10,8 +10,7 @@ const ctx = canvas.getContext('2d');
 const textCtx = xCanvas.getContext('2d');
 
 const userData = [];
-let prevGraphType = 'bar'
-
+let prevGraphType = 'bar';
 
 
 
@@ -35,6 +34,7 @@ const xAxisText = () => {
 }
 
 
+
 // Chart as bar graph
 const barGraph = () => {
     // clear graph is graph type has changed
@@ -47,6 +47,8 @@ const barGraph = () => {
         let h = userData[i];
         let y = canvas.height - h;
 
+
+
         ctx.fillStyle = 'cornflowerblue';
         ctx.fillRect(currentX, y, width, h)
         ctx.beginPath();
@@ -58,6 +60,7 @@ const barGraph = () => {
 }
 
 
+
 // Chart as dot graph
 const dotGraph = () => {
     // clear graph is graph type has changed
@@ -67,13 +70,25 @@ const dotGraph = () => {
     const width = 20;
     let currentX = 20;
     let startX = 0;
-    let startY = 0;
+    let startY = 500;
     for(let i = 0; i < userData.length; i++){
         let x = currentX;
         let h = userData[i];
         let y = canvas.height - h;
 
-        ctx.fillStyle = 'darkslategrey';
+        ctx.beginPath();
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 1;
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.closePath();
+
+        // add an extra 20 px on each move so line does not overlap circle
+        startX = currentX + 20;
+        startY = y;
+
+        ctx.fillStyle = 'cornflowerblue';
         ctx.beginPath();
         // x, y, radius, start, full circle, clockwise
         ctx.arc(currentX + width / 2, y, 10, 0, 2 * Math.PI, false);
@@ -86,7 +101,9 @@ const dotGraph = () => {
 }
 
 
-// custom validation used as practice rather than putting inputs and buttons
+
+
+// custom input validation used as practice rather than putting inputs and buttons
 // into a form and requiring them.
 
 const userSubmit = () => {
@@ -94,17 +111,22 @@ const userSubmit = () => {
     if(userInput.value === '' && prevGraphType === graphType.value){
         alert("Must enter a number to Submit");
         // if there is input and the graph type has not changed
-    } else if(prevGraphType === graphType.value) {
+    } else if(prevGraphType === graphType.value || prevGraphType !== graphType.value) {
         // if there have been less than 15 total inputs and there is current user input
-        if(userData.length < 15 && userInput.value !== ''){
+        if(userData.length < 15){
+            // because onchange triggers this function, must check for empty values during graph type change
+            if(userInput.value !== ''){
             // lastly, is the user input number in the valid range
-            if(userInput.value >= 0 && userInput.value <= 500){
-                // add the user input to the data array and clear inthe input
-                userData.push(userInput.value);
-                xAxisText();
-                userInput.value = '';
+                if(userInput.value >= 0 && userInput.value <= 500){
+                    // add the user input to the data array and clear inthe input
+                    userData.push(userInput.value);
+                    xAxisText();
+                    userInput.value = '';
+                } else {
+                    alert('Enter a number between 0 - 500')
+                }
             } else {
-                alert('Enter a number between 0 - 500')
+                    // Do nothing since the user just change categories and on change was triggered.
             }
         } else {
             alert('Maximum Entries Reached')
@@ -117,6 +139,8 @@ const userSubmit = () => {
         if(graphType.value === 'dot'){ dotGraph() }
     }
 }
+
+
 
 
 // EVENT LISTENERS //
