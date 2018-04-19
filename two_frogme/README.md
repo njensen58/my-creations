@@ -1,3 +1,5 @@
+This React App can be played by going to https://frogme.surge.sh
+
 A basic 'Frogger' style game as an interesting way to get to know a few React Lifecycle methods.
 I saved the X and Y of the Frog div in the parent state, while enemies and logs were nested
 components with their own state.  X and Y are equivalent to top and left of an absolute
