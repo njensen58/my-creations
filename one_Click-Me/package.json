@@ -1,0 +1,12 @@
+{
+  "name": "one_Click-Me",
+  "version": "1.0.0",
+  "description": "A plain Javascript randomly placed and styled button generator.  So useless, it's almost interesting!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
