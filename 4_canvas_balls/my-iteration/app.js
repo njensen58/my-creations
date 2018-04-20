@@ -88,8 +88,11 @@ function Ball(x, y, forwardX, forwardY){
             if(y < goalY + 21 && y > goalY - 21){
                 // remove the ball from the array of balls and add to score
                 balls.splice(balls.indexOf(this), 1);
+                // reset time to 0 so sounds can play as soon as triggered
                 clickSound.currentTime = 0
+                // if sound is on, play it
                 sound ? clickSound.play() : null
+                // add to score
                 score === undefined ? score = 1 : score++;
                 scoreDisplay.textContent = score;
             }
