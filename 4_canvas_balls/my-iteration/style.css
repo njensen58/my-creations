@@ -40,3 +40,14 @@ button#disco-btn {
     border: none;
     outline: none;
 }
+
+
+span#img-icon {
+    padding-top: 2px;
+    z-index: 2;
+}
+
+.active {
+    opacity: .5;
+
+}

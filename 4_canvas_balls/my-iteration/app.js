@@ -1,12 +1,21 @@
 // GLOBALS //
 let discoBtn = document.getElementById('disco-btn');
 let scoreDisplay = document.getElementById('score-span');
+let clickSound = document.getElementById('sound');
+let soundBtn = document.getElementById('img-icon');
 
-discoBtn.addEventListener('click', () => colorSwitch = !colorSwitch)
+
+discoBtn.addEventListener('click', () => colorSwitch = !colorSwitch);
+soundBtn.addEventListener('click', () =>  {
+    // turn on/off sound and darken/brigthen sound button.
+    sound = !sound;
+    sound ? soundBtn.classList.remove('active') : soundBtn.classList.add('active');
+});
 
 let mouseX, mouseY, goalX, goalY;
 let colorSwitch = true;
 let score;
+let sound = true;
 
 
 // CANVAS SETUP AND INIT VARIABLES;
@@ -54,7 +63,9 @@ const colorEngine = () => {
 // animation sequence calling balls move() method
 const animate = () => {
     ctx.clearRect(0, 0, w, h);
+    ctx.strokeStyle = 'white';
     createGoal();
+    ctx.stroke();
     ctx.fillStyle =  colorSwitch ? 'cornflowerblue' : colorEngine();
     for(let i = 0; i < balls.length; i++){
         balls[i].move();
@@ -77,6 +88,8 @@ function Ball(x, y, forwardX, forwardY){
             if(y < goalY + 21 && y > goalY - 21){
                 // remove the ball from the array of balls and add to score
                 balls.splice(balls.indexOf(this), 1);
+                clickSound.currentTime = 0
+                sound ? clickSound.play() : null
                 score === undefined ? score = 1 : score++;
                 scoreDisplay.textContent = score;
             }
@@ -116,8 +129,8 @@ function Ball(x, y, forwardX, forwardY){
         let rando1 = Math.floor(Math.random() * (11 - 1))
         let rando2 = Math.floor(Math.random() * (11 - 1))
         createBall(x, y,
-            rando1 % 2 === 0 ? true : false,
-             rando2 % 2 === 0 ? true : false);
+            false,
+             false);
     })
 
     // track mouse x and y to set global mouseX,Y
