@@ -1,0 +1,23 @@
+
+html {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background-color: #333;
+    overflow: hidden;
+}
+
+nav {
+    height: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-family: sans-serif;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    padding: 0 5px;
+}
