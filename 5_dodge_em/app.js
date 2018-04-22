@@ -15,7 +15,12 @@ let livesCount = 10;
 let startID;
 let enemyTimerID;
 let scoreCounID;
+let lifeTimerID;
 let score = 0;
+let lifeInstance = '';
+let lifeSwitch = true;
+let livesArr = [];
+
 
 
 // Initial game button
@@ -100,6 +105,46 @@ class Enemy {
                 ctx.fill();
             ctx.restore();
         }
+    }
+}
+
+class Life {
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+        this.detectHit = () => {
+            if(userMouse.x <= x + 20 && userMouse.x >= x - 20){
+                if(userMouse.y <= y + 20 && userMouse.y >= y - 20){
+                    livesArr.pop();
+                    livesArr = [];
+                    livesCount++;
+                    score+=100;
+                    lives.textContent = livesCount;
+                    lifeInstance = '';
+                }
+            }
+            ctx.save();
+                ctx.fillStyle = 'limegreen';
+                ctx.beginPath();
+                ctx.arc(x, y, 12, 0, 2 * Math.PI, false);
+                ctx.closePath();
+                ctx.fill();
+            ctx.restore();
+        }
+    }
+}
+
+const lifeGenerator = () => {
+    if(lifeInstance === ''){
+        lifeSwitch = true;
+    }
+    if(lifeSwitch){
+        lifeInstance = new Life(Math.floor(Math.random() * ((w - 20) - 20) + 20),
+                                            Math.floor(Math.random() * ((h - 20) - 50) + 50))
+    }
+    livesArr.push(lifeInstance);
+    if(lifeSwitch){
+        lifeSwitch = false;
     }
 }
 
@@ -215,7 +260,7 @@ const enemyOptionChooser = () => {
 }
 
 
-// creat enemey and random option, and push to array so clock() can use enemy.move()
+// create enemy and random option, and push to array so clock() can use enemy.move()
 const createEnemy = () => {
     let enemy;
     let opt = enemyOptionChooser();
@@ -234,6 +279,10 @@ const enemyTimer = () => {
     enemyTimerID = setInterval(createEnemy, 100);
 }
 
+const lifeTimer = () => {
+    lifeTimerID = setInterval(lifeGenerator, 6000);
+}
+
 const start = () => {
         body.removeChild(btn);
         body.classList.add('removeCursor')
@@ -244,6 +293,7 @@ const start = () => {
         startID = setInterval(clock, 27)
         enemyTimer();
         scoreCounter();
+        lifeTimer();
 }
 
 const endGame = () => {
@@ -258,17 +308,26 @@ const endGame = () => {
 }
 
 const clock = () => {
+    // Clear the canvas and check if the game is over;
     ctx.clearRect(0, 0, w, h);
     if(livesCount <= 0){
         clearInterval(startID);
         clearInterval(enemyTimerID);
         clearInterval(scoreCountID);
+        clearInterval(lifeTimerID);
         endGame()
     }
+
+    // continue game by print ball and moving all the enemies;
     createBall(userMouse.x, userMouse.y)
     if(enemies){
         for(let i = 0; i < enemies.length; i++){
             enemies[i].move();
+        }
+    }
+    if(livesArr.length > 0){
+        for(let i = 0; i < livesArr.length; i++){
+            livesArr[i].detectHit();
         }
     }
 }
