@@ -20,6 +20,7 @@ let score = 0;
 let lifeInstance = '';
 let lifeSwitch = true;
 let livesArr = [];
+let ballSize = 14;
 
 
 
@@ -52,7 +53,7 @@ class Ball {
         ctx.save();
             ctx.fillStyle = 'navy';
             ctx.beginPath();
-            ctx.arc(x, y, 20, 0, 2 * Math.PI, false);
+            ctx.arc(x, y, ballSize, 0, 2 * Math.PI, false);
             ctx.closePath();
             ctx.fill();
         ctx.restore();
@@ -88,10 +89,11 @@ class Enemy {
             }
 
             // Check for collision with player
-            if(userMouse.x <= x + 25 && userMouse.x >= x - 25){
-                if(userMouse.y <= y + 25 && userMouse.y >= y - 25){
+            if(userMouse.x <= x + ballSize + 5 && userMouse.x >= x - ballSize - 5){
+                if(userMouse.y <= y + ballSize + 5 && userMouse.y >= y - ballSize - 5){
                     enemies.splice(enemies.indexOf(this), 1)
-                    livesCount--
+                    livesCount--;
+                    ballSize--;
                     lives.textContent = livesCount;
                 }
             }
@@ -113,11 +115,11 @@ class Life {
         this.x = x;
         this.y = y;
         this.detectHit = () => {
-            if(userMouse.x <= x + 20 && userMouse.x >= x - 20){
-                if(userMouse.y <= y + 20 && userMouse.y >= y - 20){
+            if(userMouse.x <= (x + ballSize + 5) && userMouse.x >= (x - ballSize - 5)){
+                if(userMouse.y <= (y + ballSize + 5) && userMouse.y >= (y - ballSize - 5)){
                     livesArr.pop();
-                    livesArr = [];
                     livesCount++;
+                    ballSize+=3;
                     score+=100;
                     lives.textContent = livesCount;
                     lifeInstance = '';
@@ -134,6 +136,7 @@ class Life {
     }
 }
 
+// Generates randomly placed life dots only if the current dot has been taken.
 const lifeGenerator = () => {
     if(lifeInstance === ''){
         lifeSwitch = true;
@@ -276,7 +279,7 @@ const createBall = (x, y) => {
 
 // generates an enemy once every .1 second// could expand this to decrement when score hits certain threshholds
 const enemyTimer = () => {
-    enemyTimerID = setInterval(createEnemy, 100);
+    enemyTimerID = setInterval(createEnemy, 150);
 }
 
 const lifeTimer = () => {
