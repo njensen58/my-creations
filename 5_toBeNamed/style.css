@@ -1,0 +1,43 @@
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+
+.startBtn {
+    padding: 10px;
+    border: none;
+    color: #eee;
+    background-color: #333;
+    font-family: sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    margin: auto 43%;
+    border-radius: 4px;
+    outline: none;
+}
+
+nav {
+    height: 30px;
+    background-color: #222;
+    display: flex;
+    justify-content: space-evenly;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    align-items: center;
+}
+
+nav  a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.removeCursor {
+    cursor: none;
+}
+
+span {
+    color: white;
+}
