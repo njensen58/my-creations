@@ -21,7 +21,10 @@ let lifeInstance = '';
 let lifeSwitch = true;
 let livesArr = [];
 let ballSize = 14;
-
+let speed2 = true;
+let speed3 = true;
+let speed4 = true;
+let speed5 = true;
 
 
 // Initial game button
@@ -118,7 +121,7 @@ class Life {
             if(userMouse.x <= (x + ballSize + 5) && userMouse.x >= (x - ballSize - 5)){
                 if(userMouse.y <= (y + ballSize + 5) && userMouse.y >= (y - ballSize - 5)){
                     livesArr.pop();
-                    livesCount++;
+                    livesCount+=2;
                     ballSize+=3;
                     score+=100;
                     lives.textContent = livesCount;
@@ -277,9 +280,10 @@ const createBall = (x, y) => {
 }
 
 
-// generates an enemy once every .1 second// could expand this to decrement when score hits certain threshholds
-const enemyTimer = () => {
-    enemyTimerID = setInterval(createEnemy, 150);
+// sets the enemy generating interval, resets it when called again with a new speed.
+const enemyTimer = (speed) => {
+    if(enemyTimerID) { clearInterval(enemyTimerID) }
+    enemyTimerID = setInterval(createEnemy, speed);
 }
 
 const lifeTimer = () => {
@@ -294,11 +298,12 @@ const start = () => {
         canvas.style.backgroundColor = "#333";
         lives.textContent = livesCount;
         startID = setInterval(clock, 27)
-        enemyTimer();
+        enemyTimer(130);
         scoreCounter();
         lifeTimer();
 }
 
+// End game sequence
 const endGame = () => {
     ctx.clearRect(0, 0, w, h);
     body.classList.remove('removeCursor');
@@ -320,6 +325,25 @@ const clock = () => {
         clearInterval(lifeTimerID);
         endGame()
     }
+
+    // make enemies generate faster after 1000, 2000, 3000, & 4000.
+    if(score > 1000 && speed2){
+        enemyTimer(110)
+        speed2 = false;
+    }
+    if(score > 2000 && speed3){
+        enemyTimer(90)
+        speed3 = false;
+    }
+    if(score > 3000 && speed4){
+        enemyTimer(75)
+        speed4 = false;
+    }
+    if(score > 4000 && speed5){
+        enemyTimer(60);
+        speed5 = false;
+    }
+
 
     // continue game by print ball and moving all the enemies;
     createBall(userMouse.x, userMouse.y)
@@ -345,16 +369,9 @@ window.addEventListener('mousemove', (e) => {
     userMouse.y = e.offsetY;
 })
 
-window.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    userMouse.x = e.pageX;
-    userMouse.y = e.pageY;
-})
-
-window.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    userMouse.x = e.pageX;
-    userMouse.y = e.pageY;
+window.addEventListener('click', (e) => {
+    userMouse.x = e.offsetX;
+    userMouse.y = e.offsetY;
 })
 
 window.addEventListener('resize', () => {
