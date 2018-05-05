@@ -9,10 +9,18 @@ const randomColor = () => {
 }
 
 
-// -- Generate 600 divs, give them classes, and append them to the document. -- //
+// -- Generate divs depending on window width, give them classes, and append them to the document. -- //
 const createBoxes = () => {
+    var boxAmount = 0;
+    if(window.innerWidth < 500){
+        boxAmount = 600;
+    } else if(window.innerWidth < 1000){
+        boxAmount = 1000;
+    } else {
+        boxAmount = 1500;
+    }
     const container = document.getElementById('container')
-    for(let i = 0; i < 600; i++){
+    for(let i = 0; i < boxAmount; i++){
         var box = document.createElement('div');
         box.classList.add('box');
         container.appendChild(box);
