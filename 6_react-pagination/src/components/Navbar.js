@@ -22,7 +22,7 @@ const Navbar = (props) => {
     return (
         <NavStyle>
             <LinkStyle href="#">Home</LinkStyle>
-            <LinkStyle href="https://www.github.com/">About</LinkStyle>
+            <LinkStyle href="https://github.com/njensen58/my-creations/tree/master/6_react-pagination">About</LinkStyle>
         </NavStyle>
     )
 }

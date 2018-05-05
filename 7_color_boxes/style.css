@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+@keyframes rotate {
+    from {transform: rotate(90deg)}
+    to {transform: rotate(360deg)}
+}
+
+#navDiv {
+    height: 30px;
+    background-color: #333;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#navDiv > a {
+    text-decoration: none;
+    color: #999;
+    font-weight: lighter;
+    text-transform: uppercase;
+    transition-property: all;
+    transition-duration: .4s;
+    border-bottom: 2px solid #333;
+    font-family: sans-serif;
+}
+
+#navDiv > a:hover {
+    color: white;
+    background-color: #222;
+    border-bottom: 2px solid white;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#resetDiv {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#resetDiv button {
+    width: 60px;
+    margin: 0;
+    padding: 25px 70px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: #555;
+    color: #ddd;
+    letter-spacing: 1px;
+}
+
+#title {
+    margin: 5px;
+    align-items: center;
+    font-family: monospace;
+    text-align: center;
+}
+
+.box {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    border: 1px solid white;
+    transition: .4s;
+}
+
+#spin {
+    color: limegreen;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-weight: lighter;
+    font-family: sans-serif;
+}
+
+.animate {
+    animation: rotate 2s infinite;
+}
+
+.on {
+    border: 3px solid white;
+}
