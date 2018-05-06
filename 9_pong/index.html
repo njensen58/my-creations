@@ -14,16 +14,33 @@
         <a href="#">About</a>
     </nav>
 
+    <div id="leftBanner"></div>
+    <div id="rightBanner"></div>
+
     <div id="scoreContainer">
         <span>P1 Score: <span id="player1Score"></span></span>
         <span>P2 Score: <span id="player2Score"></span></span>
     </div>
 
-    <canvas id="my-canvas" height="350" width="450"></canvas>
+    <div id="canvasContainer">
+        <canvas id="myCanvas" height="350" width="450"></canvas>
+    </div>
 
     <div id="controls">
-        <button id="serveBtn">Serve Ball</button>
+        <div id="p1ControlDiv">
+            <button id="p1Up">UP (A)</button>
+            <button id="p1Down">DOWN (Z)</button>
+        </div>
+        <div id="serveDiv">
+            <button id="serveBtn">Serve Ball (ENTER)</button>
+        </div>
+        <div id="p2ControlDiv">
+            <button id="p2Up">UP ( " )</button>
+            <button id="p2Down">DOWN ( / )</button>
+        </div>
     </div>
+
+    <footer>Nate Jensen - 2018</footer>
 
     <script src="app.js" type="text/javascript"></script>
 
