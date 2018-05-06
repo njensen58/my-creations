@@ -1,3 +1,28 @@
 body {
     margin: 0;
 }
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #222;
+}
+
+nav > a,
+nav > span {
+    color: #ddd;
+    font-family: sans-serif;
+    padding: 0 20px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    color: white;
+    background-color: #333;
+    font-family: sans-serif;
+    height: 40px;
+}

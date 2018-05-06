@@ -1,19 +1,30 @@
 const canvas = document.getElementById('my-canvas');
 const ctx = canvas.getContext('2d');
 
-const height = window.innerHeight;
-const width = window.innerWidth;
+let height = window.innerHeight;
+let width = window.innerWidth;
 
-canvas.height = height;
+canvas.height = height - 30;
 canvas.width = width;
 
 // axis is setting and keeping track of player's x & y
-const axis = {x: 50, y: 400}
+const axis = {x: 50, y: 410}
 let player;
 let maxHeight = 100;
 let jumpingID = null;
 let goingDown = false;
 const blocks = [];
+let lives = 10;
+let score = 0;
+let blockID = null;
+let scoreID;
+let scoreDisplay;
+let livesDisplay;
+let speed2 = false;
+let speed3 = false;
+let speed4 = false;
+let doubles = false;
+let triples = false;
 
 
 class Player {
@@ -23,8 +34,7 @@ class Player {
         this.generate = () => {
             ctx.beginPath();
             ctx.fillStyle = 'navy';
-            ctx.transition = 'all .5s'
-            ctx.arc(x, y, 35, 0, 2 * Math.PI, false);
+            ctx.arc(x, y, 25, 0, 2 * Math.PI, false);
             ctx.fill();
             ctx.closePath();
         }
@@ -52,9 +62,11 @@ class Block {
             }
 
             // check for collision with player //
-            if(axis.x < x + 35 && axis.x > x - 35){
-                if(axis.y >= y - 35 && axis.y < y + h + 35){
+            if(axis.x < x + 25 && axis.x > x - 25){
+                if(axis.y >= y - 25 && axis.y < y + h + 25){
                     blocks.splice(blocks.indexOf(this), 1)
+                    lives--;
+                    livesDisplay.textContent = lives;
                 }
             }
 
@@ -76,38 +88,93 @@ const initiateJump = () => {
 
 const jump = () => {
     if(axis.y > maxHeight && !goingDown){
-        axis.y -= 10;
+        axis.y -= 12;
     } else {
         goingDown = true;
-        axis.y += 10;
-        if(axis.y >= 400){
+        axis.y += 12;
+        if(axis.y >= 410){
             clearInterval(jumpingID);
             jumpingID = null;
             goingDown = false;
-            axis.y = 400;
+            axis.y = 410;
         }
     }
 }
 
-const blockMaker = () => {
-    setInterval(generateBlock, 2000)
+const blockMaker = (speed) => {
+    if(blockID === null){
+        blockID = setInterval(generateBlock, speed)
+    }
+}
+
+const createFloorCeiling = () => {
+    // floor
+    ctx.beginPath();
+    ctx.fillStyle = '#333';
+    ctx.strokeStyle = 'black';
+    ctx.rect(0, 435, width, 500);
+    ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
+
+    // ceiling
+    ctx.beginPath();
+    ctx.fillStyle = '#333';
+    ctx.strokeStyle = 'black';
+    ctx.rect(0, 0, width, 65);
+    ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
 }
 
 const clock = () => {
+    if(lives <= 0){
+        clearInterval(clockID)
+        clearInterval(scoreID)
+    }
     ctx.clearRect(0, 0, width, height);
     player = new Player(axis.x, axis.y);
     player.generate();
     for(let i = 0; i < blocks.length; i++){
         blocks[i].move();
     }
+    createFloorCeiling();
+    if(score > 250 && !speed2){
+        clearInterval(blockID)
+        blockID = null
+        blockMaker(1000)
+        speed2 = true
+    }
+    if(score > 500 && !speed3){
+        clearInterval(blockID)
+        blockID = null
+        blockMaker(750)
+        speed3 = true
+    }
+    if(score > 800 && !speed4){
+        clearInterval(blockID)
+        blockID = null
+        blockMaker(550)
+        speed4 = true
+    }
+    if(score > 1200 && !doubles){
+        blockID = null;
+        blockMaker(1000);
+        doubles = true;
+    }
+    if(score > 2000 && !triples){
+        blockID = null;
+        blockMaker(1000);
+        triples = true;
+    }
 }
 
 
 const generateBlock = () => {
     let block = new Block(
-                    width + 40,                                    // x
-                    Math.floor(Math.random() * (450 - 200) + 200), // y
-                    Math.floor(Math.random() * (100 - 50) + 50))   // height
+                    width + 40,                                      // x
+                    Math.floor(Math.random() * (390 - 30 + 1) + 30), // y
+                    Math.floor(Math.random() * (60 - 20 + 1) + 20)) // height
     blocks.push(block)
 }
 
@@ -124,14 +191,37 @@ const generateEvents = () => {
             initiateJump()
         }
     })
+    window.addEventListener('resize', (e) => {
+        height = e.target.innerHeight - 30;
+        width = e.target.innerWidth;
+    })
+}
+
+const setLivesAndScore = (livesDis, scoreDis) => {
+    livesDis.textContent = lives;
+    scoreDis.textContent = score;
+}
+
+const startScore = () => {
+    scoreID = setInterval(function(){
+        score+=2
+        scoreDisplay.textContent = score;
+    }, 50)
+}
+
+const grabElements = () => {
+    scoreDisplay = document.getElementById('score');
+    livesDisplay = document.getElementById('lives');
+    setLivesAndScore(livesDisplay, scoreDisplay);
 }
 
 // Start all functions/events //
 
-setInterval(clock, 30);
+let clockID = setInterval(clock, 30);
 generateEvents();
-blockMaker();
-
+grabElements();
+blockMaker(2000);
+startScore();
 
 
 ///
