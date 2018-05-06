@@ -2,6 +2,8 @@
 
 const canvas = document.getElementById('my-canvas');
 const ctx = canvas.getContext('2d');
+const p1ScoreDis = document.getElementById('player1Score');
+const p2ScoreDis = document.getElementById('player2Score');
 
 let height = window.innerHeight;
 let width = window.innerWidth;
@@ -16,6 +18,7 @@ let player1;
 let player2;
 const player1Axis = {x: 10, y: 200}
 const player2Axis = {x: canvas.width - 25, y: 200}
+const scoreCard = {p1: 0, p2: 0}
 
 
 class Player {
@@ -64,6 +67,8 @@ class Ball {
             // Check to see if ball hits player 1's wall
             if(x <= player1Axis.x){
                 balls.splice(balls.indexOf(this));
+                scoreCard.p2++;
+                p2ScoreDis.textContent = scoreCard.p2;
             }
 
             // Check to see if it hits player 2's paddle
@@ -76,6 +81,8 @@ class Ball {
             //Check to see if ball hits player 2's wall
             if(x >= player2Axis.x + 10){
                 balls.splice(balls.indexOf(this));
+                scoreCard.p1++;
+                p1ScoreDis.textContent = scoreCard.p1;
             }
 
             if(x > 5 && !movingRight){
@@ -142,6 +149,9 @@ player1 = new Player(player1Axis.x, player1Axis.y);
 players.push(player1);
 player2 = new Player(player2Axis.x, player2Axis.y);
 players.push(player2);
+
+p1ScoreDis.textContent = scoreCard.p1;
+p2ScoreDis.textContent = scoreCard.p2;
 
 gameBall = new Ball(canvas.width / 2, canvas.height / 2);
 balls.push(gameBall);
