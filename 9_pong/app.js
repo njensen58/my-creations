@@ -68,7 +68,7 @@ class Ball {
             if(x <= player1Axis.x + 25){
                 if(y <= player1Axis.y + 75 && y >= player1Axis.y){
                     movingRight = true;
-                    speed+=.5
+                    speed+=.25
                 }
             }
             // Check to see if ball hits player 1's wall //
@@ -135,6 +135,7 @@ function animate(){
     }
 }
 
+
 serveBtn.addEventListener('click', ()=>{
     let randomDir1 = Math.floor(Math.random() * (3 - 1) + 1)
     let randomDir2 = Math.floor(Math.random() * (3 - 1) + 1)
@@ -143,10 +144,11 @@ serveBtn.addEventListener('click', ()=>{
                             canvas.height / 2,
                             randomDir1 % 2 === 0,
                             randomDir2 % 2 === 0,
-                            3);
+                            2.75);
         balls.push(gameBall);
     }
 })
+
 
 window.addEventListener('keydown', (e) => {
     if(e.code === "KeyZ"){
@@ -188,7 +190,6 @@ p2ScoreDis.textContent = scoreCard.p2;
 
 let randomDir1 = Math.floor(Math.random() * (3 - 1) + 1)
 let randomDir2 = Math.floor(Math.random() * (3 - 1) + 1)
-
 
 
 
