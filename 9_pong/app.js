@@ -64,6 +64,28 @@ class Ball {
         this.speed = speed;
         this.move = () => {
 
+            // Handle x movement of ball //
+            if(x > 0 && !movingRight){
+                x-=speed
+            } else if(x <= 0 || movingRight){
+                movingRight = true;
+                x+=speed
+                if(x > canvas.width - 1){
+                    movingRight = false;
+                }
+            }
+
+            // Handle y movement of ball //
+            if(y < canvas.height - 15 && !movingUp){
+                y+=speed
+            } else if(y >= canvas.height - 25 || movingUp){
+                movingUp = true;
+                y-=speed
+                if(y <= 10){
+                    movingUp = false;
+                }
+            }
+
             // Check to see if ball hits player 1's paddle //
             if(x <= player1Axis.x + 25){
                 if(y <= player1Axis.y + 75 && y >= player1Axis.y){
@@ -93,27 +115,7 @@ class Ball {
                 p1ScoreDis.textContent = scoreCard.p1;
             }
 
-            // Handle x movement of ball //
-            if(x > 0 && !movingRight){
-                x-=speed
-            } else if(x <= 0 || movingRight){
-                movingRight = true;
-                x+=speed
-                if(x > canvas.width - 1){
-                    movingRight = false;
-                }
-            }
 
-            // Handle y movement of ball //
-            if(y < canvas.height - 15 && !movingUp){
-                y+=speed
-            } else if(y >= canvas.height - 25 || movingUp){
-                movingUp = true;
-                y-=speed
-                if(y <= 10){
-                    movingUp = false;
-                }
-            }
 
             ctx.beginPath();
             ctx.fillStyle = 'black';
