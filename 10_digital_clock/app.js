@@ -1,66 +1,64 @@
-const num1Top = document.getElementById('num1-num1');
-const num1TopLeft = document.getElementById('num1-num2');
-const num1TopRight = document.getElementById('num1-num3');
-const num1Mid = document.getElementById('num1-num4');
-const num1BtmLeft = document.getElementById('num1-num5');
-const num1BtmRight = document.getElementById('num1-num6');
-const num1Btm = document.getElementById('num1-num7');
+(function(){
 
-function getTime(){
-    let now = new Date();
-    let hour = now.getHours();
-    let min = now.getMinutes();
+const clockContainer = document.getElementById('clock-container')
+const num1  = document.getElementById('num1')
+const num2  = document.getElementById('num2')
+const num3  = document.getElementById('num3')
+const num4  = document.getElementById('num4')
+const colon = document.getElementById('colon')
+const amPm  = document.getElementById('amPm')
+const lightBtn = document.getElementById('light-btn');
 
-    num1Render(hour)
+let lightToggle = false;
+
+
+
+
+function getTime() {
+    let now = new Date()
+    let hour = now.getHours()
+    let min = now.getMinutes()
+    colon.textContent = ':'
+    if(hour <= 12){
+        amPm.textContent = "am"
+    } else {
+        amPm.textContent = "pm"
+    }
+    setHour(hour);
+    setMinute(min)
 }
 
 
-function num1Render(hour){
-    switch(hour){
-        case 0:
-            num1Mid.classList.remove('num4');
-            break;
-        case 1:
-            num1Mid.classList.remove('num4');
-            break;
-        case 2:
-            num1Mid.classList.remove('num4');
-            break;
-        case 3:
-            num1Mid.classList.remove('num4');
-            break;
-        case 4:
-            num1Mid.classList.remove('num4');
-            break;
-        case 5:
-            num1Mid.classList.remove('num4');
-            break;
-        case 6:
-            num1Mid.classList.remove('num4');
-            break;
-        case 7:
-            num1Mid.classList.remove('num4');
-            break;
-        case 8:
-            num1Mid.classList.remove('num4');
-            break;
-        case 9:
-            num1Mid.classList.remove('num4');
-            break;
-        case 10:
-            num1Top.classList.remove('num1');
-            num1TopLeft.classList.remove('num2');
-            num1Mid.classList.remove('num4');
-            num1BtmLeft.classList.remove('num5');
-            num1Btm.classList.remove('num7')
-            break;
-        case 11:
-            // code:
-            break;
-        case 12:
-            // code;
-            break;
+function setHour(hour) {
+    if(hour < 10){
+        num1.textContent = `0${hour}`
+    } else {
+        num1.textContent = `${hour}`
     }
 }
 
-setInterval(getTime, 1000)
+function setMinute(min) {
+    if(min < 10){
+        num3.textContent = `0${min}`;
+    } else {
+        num3.textContent = `${min}`;
+    }
+}
+
+
+
+lightBtn.addEventListener('click', function(){
+    if(lightToggle){
+        lightToggle = !lightToggle
+        console.log(lightToggle)
+    } else {
+        lightToggle = !lightToggle
+        console.log(lightToggle)
+    }
+})
+
+
+setInterval(getTime, 1000);
+
+
+}())

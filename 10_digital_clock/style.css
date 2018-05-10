@@ -4,131 +4,53 @@
 
 body {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-
-.clock-container {
+#clock-container {
     width: 400px;
-    height: 200px;
-    border: 1px solid black;
-    display: grid;
-    grid-template-columns: 3fr 3fr 1fr 3fr 3fr 1fr;
-}
-
-
-#num1-Container {
-    grid-column: 1;
-    height: 100%;
-    border: 1px solid black;
-    display: grid;
-    grid-template-rows: 1fr 2fr 1fr 2fr 1fr;
-}
-
-#num2-Container {
-    grid-column: 2;
-    height: 100%;
-    border: 1px solid black;
-    grid-template-rows: 1fr 2fr 1fr 2fr 1fr;
-    display: grid;
-}
-
-#dot-container {
-    grid-column: 3;
-    height: 100%;
-    border: 1px solid black;
-    grid-template-rows: 1fr 2fr 1fr 2fr 1fr;
-    display: grid;
-}
-
-#num3-Container {
-    grid-column: 4;
-    height: 100%;
-    border: 1px solid black;
-    grid-template-rows: 1fr 2fr 1fr 2fr 1fr;
-    display: grid;
-}
-
-#num4-Container {
-    grid-column: 5;
-    height: 100%;
-    border: 1px solid black;
-    grid-template-rows: 1fr 2fr 1fr 2fr 1fr;
-    display: grid;
-}
-
-
-
-.num1 {
-    grid-row: 1;
-    width: 80%;
-    height: 20px;
-    background-color: black;
-    border-radius: 40px;
-    margin-top: 5px;
-    margin-left: 8px;
-}
-
-.top-spread {
+    height: 150px;
     display: flex;
-    justify-content: space-between;
-    margin: 0 2px;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 4px;
+    font-size: 120px;
+    font-family: sans-serif;
+    font-weight: lighter;
+    margin-top: 20px;
+    color: rgb(235, 209, 72);
+    background-color: rgb(25, 27, 41);
 }
 
-.num2 {
-    grid-row: 2;
-    width: 20px;
-    height: 100%;
-    background-color: black;
-    border-radius: 40px;
+#num1 {
+    margin-left: 10px;
 }
 
-.num3 {
-    grid-row: 2;
-    width: 20px;
-    height: 100%;
-    background-color: black;
-    border-radius: 40px;
+#num2 {
+
 }
 
-.num4 {
-    grid-row: 3;
-    width: 80%;
-    height: 20px;
-    background-color: black;
-    border-radius: 40px;
-    margin-top: 5px;
-    margin-left: 8px;
+#colon {
+    margin-bottom: 20px;
 }
 
-.bottom-spread {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 2px;
+#num3 {
+
 }
 
-.num5 {
-    grid-row: 4;
-    width: 20px;
-    height: 100%;
-    background-color: black;
-    border-radius: 40px;
+#num4 {
+
 }
 
-.num6 {
-    grid-row: 4;
-    width: 20px;
-    height: 100%;
-    background-color: black;
-    border-radius: 40px;
+#amPm {
+    font-size: 15px;
+    font-weight: lighter;
+    padding-right: 20px;
 }
 
-.num7 {
-    grid-row: 5;
-    width: 80%;
-    height: 20px;
-    background-color: black;
-    border-radius: 40px;
-    margin-top: 5px;
-    margin-left: 8px;
+#light-btn {
+    position: absolute;
+    transform: translate(184px, -87px)
 }
