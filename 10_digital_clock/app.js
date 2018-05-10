@@ -2,16 +2,16 @@
 
 const clockContainer = document.getElementById('clock-container')
 const num1  = document.getElementById('num1')
-const num2  = document.getElementById('num2')
 const num3  = document.getElementById('num3')
-const num4  = document.getElementById('num4')
 const colon = document.getElementById('colon')
 const amPm  = document.getElementById('amPm')
 const lightBtn = document.getElementById('light-btn');
+const themeSelect = document.themeForm.themeType;
+let prevTheme = 'basic';
+
+
 
 let lightToggle = false;
-
-
 
 
 function getTime() {
@@ -37,28 +37,32 @@ function setHour(hour) {
     }
 }
 
+
 function setMinute(min) {
     if(min < 10){
-        num3.textContent = `0${min}`;
+        num3.textContent = `0${min}`
     } else {
-        num3.textContent = `${min}`;
+        num3.textContent = `${min}`
     }
 }
 
 
-
-lightBtn.addEventListener('click', function(){
-    if(lightToggle){
-        lightToggle = !lightToggle
-        console.log(lightToggle)
-    } else {
-        lightToggle = !lightToggle
-        console.log(lightToggle)
-    }
+themeSelect.addEventListener('change', (e) => {
+    let theme = e.target.value;
+    clockContainer.classList.remove(`lightOn-${prevTheme}`)
+    clockContainer.classList.remove(`lightOff-${prevTheme}`)
+    clockContainer.classList.add(`lightOff-${theme}`)
+    prevTheme = theme;
 })
 
 
-setInterval(getTime, 1000);
+lightBtn.addEventListener('click', function() {
+        clockContainer.classList.toggle(`lightOn-${themeSelect.value}`)
+        clockContainer.classList.toggle(`lightOff-${themeSelect.value}`)
+})
 
+
+
+setInterval(getTime, 1000)
 
 }())

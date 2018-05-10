@@ -6,6 +6,25 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin: 0;
+}
+
+nav {
+    height: 40px;
+    background-color: #ddd;
+    color: #222;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+nav > a {
+    text-decoration: none;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: lighter;
+    text-transform: uppercase;
 }
 
 #clock-container {
@@ -14,23 +33,19 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border: 2px solid black;
-    border-radius: 4px;
+    border: 3px solid black;
+    border-radius: 5px;
     font-size: 120px;
-    font-family: sans-serif;
+    font-family: 'Exo 2', sans-serif;
     font-weight: lighter;
     margin-top: 20px;
-    color: rgb(235, 209, 72);
-    background-color: rgb(25, 27, 41);
+    box-shadow: inset 0px 0px 20px 7px rgba(0, 0, 0, .4);
 }
 
 #num1 {
     margin-left: 10px;
 }
 
-#num2 {
-
-}
 
 #colon {
     margin-bottom: 20px;
@@ -40,9 +55,6 @@ body {
 
 }
 
-#num4 {
-
-}
 
 #amPm {
     font-size: 15px;
@@ -50,7 +62,83 @@ body {
     padding-right: 20px;
 }
 
+
 #light-btn {
     position: absolute;
-    transform: translate(184px, -87px)
+    transform: translate(184px, -94px);
+    user-select: none;
+}
+
+#form {
+    margin-top: 20px;
+}
+
+
+
+/*--------------*/
+/*    STYLES    */
+/*--------------*/
+
+
+/* BASIC STYLES */
+.lightOn-basic {
+    color: rgb(25, 27, 41);
+    background-color: rgb(235, 209, 72);
+}
+
+.lightOff-basic {
+    color: rgb(235, 209, 72);
+    background-color: rgb(25, 27, 41);
+}
+
+
+
+/*  BLUES  */
+.lightOn-blues {
+    color: #336B87;
+    background-color: #90AFC5;
+}
+
+.lightOff-blues {
+    color: #90AFC5;
+    background-color: #336B87;
+}
+
+
+
+/* SUMMER */
+.lightOn-summer {
+    color: #FFBB00;
+    background-color: #3F681C;
+}
+
+.lightOff-summer {
+    color: #3F681C;
+    background-color: #FFBB00;
+}
+
+
+
+/* SEA */
+.lightOn-carribean {
+    color: #F4CC70;
+    background-color: #20948B;
+}
+
+.lightOff-carribean {
+    color: #20948B;
+    background-color: #F4CC70;
+}
+
+
+
+/* RASTA */
+.lightOn-rasta {
+    color: #33309;
+    background: linear-gradient(to right, #e20d0d, #f0d817, #3eb308);
+}
+
+.lightOff-rasta {
+    color: #3eb308;
+    background-color: black;
 }

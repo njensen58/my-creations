@@ -1,0 +1,1 @@
+A Digital clock with different themes to choose from.  The goal was to make a clock that could have it's classes interchanged depend on the theme selected, but using string literals to set the classes from the css sheet.
