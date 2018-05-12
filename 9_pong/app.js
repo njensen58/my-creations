@@ -30,27 +30,27 @@ class Player {
     constructor(x, y){
         this.x = x;
         this.y = y;
-        this.render = () => {
-            ctx.beginPath();
-            ctx.fillStyle = 'navy';
+    }
+    render() {
+        ctx.beginPath();
+        ctx.fillStyle = 'navy';
 
-            ctx.rect(x, y, 15, 75);
-            ctx.fill();
-            ctx.closePath();
+        ctx.rect(this.x, this.y, 15, 75);
+        ctx.fill();
+        ctx.closePath();
+    }
+    moveDown() {
+        if (this.y < canvas.height - 70) {
+            this.y+=20;
+            player1Axis.y = this.y;
+            player2Axis.y = this.y;
         }
-        this.moveDown = () => {
-            if (y < canvas.height - 70) {
-                y+=20;
-                player1Axis.y = y;
-                player2Axis.y = y;
-            }
-        }
-        this.moveUp = () => {
-            if (y > 0) {
-                y-=20;
-                player1Axis.y = y;
-                player2Axis.y = y;
-            }
+    }
+    moveUp() {
+        if (this.y > 0) {
+            this.y-=20;
+            player1Axis.y = this.y;
+            player2Axis.y = this.y;
         }
     }
 }
@@ -62,67 +62,67 @@ class Ball {
         this.movingRight = movingRight;
         this.movingUp = movingUp;
         this.speed = speed;
-        this.move = () => {
+    }
+    move()  {
 
-            // Handle x movement of ball //
-            if(x > 0 && !movingRight){
-                x-=speed
-            } else if(x <= 0 || movingRight){
-                movingRight = true;
-                x+=speed
-                if(x > canvas.width - 1){
-                    movingRight = false;
-                }
+        // Handle x movement of ball //
+        if(this.x > 0 && !this.movingRight){
+            this.x-=this.speed
+        } else if(this.x <= 0 || this.movingRight){
+            this.movingRight = true;
+            this.x+=this.speed
+            if(this.x > canvas.width - 1){
+                this.movingRight = false;
             }
-
-            // Handle y movement of ball //
-            if(y < canvas.height - 15 && !movingUp){
-                y+=speed
-            } else if(y >= canvas.height - 25 || movingUp){
-                movingUp = true;
-                y-=speed
-                if(y <= 10){
-                    movingUp = false;
-                }
-            }
-
-            // Check to see if ball hits player 1's paddle //
-            if(x <= player1Axis.x + 25){
-                if(y <= player1Axis.y + 75 && y >= player1Axis.y){
-                    movingRight = true;
-                    speed+=.25
-                }
-            }
-            // Check to see if ball hits player 1's wall //
-            if(x <= player1Axis.x){
-                balls.splice(balls.indexOf(this));
-                scoreCard.p2++;
-                p2ScoreDis.textContent = scoreCard.p2;
-            }
-
-            // Check to see if it hits player 2's paddle //
-            if(x >= player2Axis.x - 10 && x <= player2Axis.x + 10){
-                if(y <= player2Axis.y + 75 && y >= player2Axis.y){
-                    movingRight = false;
-                    speed+=.5
-                }
-            }
-
-            //Check to see if ball hits player 2's wall //
-            if(x >= player2Axis.x + 10){
-                balls.splice(balls.indexOf(this));
-                scoreCard.p1++;
-                p1ScoreDis.textContent = scoreCard.p1;
-            }
-
-
-
-            ctx.beginPath();
-            ctx.fillStyle = 'black';
-            ctx.arc(x, y, 10, 0, 2 * Math.PI, false);
-            ctx.fill();
-            ctx.closePath();
         }
+
+        // Handle y movement of ball //
+        if(this.y < canvas.height - 15 && !this.movingUp){
+            this.y+=this.speed
+        } else if(this.y >= canvas.height - 25 || this.movingUp){
+            this.movingUp = true;
+            this.y-=this.speed
+            if(this.y <= 10){
+                this.movingUp = false;
+            }
+        }
+
+        // Check to see if ball hits player 1's paddle //
+        if(this.x <= player1Axis.x + 25){
+            if(this.y <= player1Axis.y + 75 && this.y >= player1Axis.y){
+                this.movingRight = true;
+                this.speed+=.25
+            }
+        }
+        // Check to see if ball hits player 1's wall //
+        if(this.x <= player1Axis.x){
+            balls.splice(balls.indexOf(this));
+            scoreCard.p2++;
+            p2ScoreDis.textContent = scoreCard.p2;
+        }
+
+        // Check to see if it hits player 2's paddle //
+        if(this.x >= player2Axis.x - 10 && this.x <= player2Axis.x + 10){
+            if(this.y <= player2Axis.y + 75 && this.y >= player2Axis.y){
+                this.movingRight = false;
+                this.speed+=.5
+            }
+        }
+
+        //Check to see if ball hits player 2's wall //
+        if(this.x >= player2Axis.x + 10){
+            balls.splice(balls.indexOf(this));
+            scoreCard.p1++;
+            p1ScoreDis.textContent = scoreCard.p1;
+        }
+
+
+
+        ctx.beginPath();
+        ctx.fillStyle = 'black';
+        ctx.arc(this.x, this.y, 10, 0, 2 * Math.PI, false);
+        ctx.fill();
+        ctx.closePath();
     }
 }
 
