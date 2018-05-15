@@ -8,7 +8,7 @@ const Themes = ({ handleThemeChange, options, type }) => {
     })
     return (
         <div>
-            <select name="themes" onChange={(e)=>handleThemeChange(e, type) }>
+            <select name="themes" onChange={ (e)=>handleThemeChange(e, type) }>
                 { mappedOptions }
             </select>
         </div>

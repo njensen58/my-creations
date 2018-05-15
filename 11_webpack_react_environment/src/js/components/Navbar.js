@@ -3,7 +3,7 @@ import React from 'react';
 const Navbar = () => {
     return (
         <nav>
-            <a href="#">About</a>
+            <a href="https://github.com/njensen58/my-creations/tree/master/11_webpack_react_environment">About</a>
         </nav>
     )
 }

@@ -1,12 +1,13 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const path = require('path')
 
+// entry and output will default to these settings going forward, so not necessary to state //
+
 module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
-
     },
     module: {
         rules: [

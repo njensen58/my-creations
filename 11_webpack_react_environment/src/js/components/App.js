@@ -100,7 +100,7 @@ class App extends Component {
                             handleSubmit={this.handleSubmit}
                             handleChange={this.handleChange}
                             value={this.state.userInput}/>
-                        <div>
+                        <div className="themesContainer">
                             <span>Color: </span>
                             <Themes
                                 handleThemeChange={this.handleThemeChange}

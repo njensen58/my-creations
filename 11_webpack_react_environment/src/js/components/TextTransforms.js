@@ -21,10 +21,10 @@ const TextTransforms = ({ handleTextEdit }) => {
                 <MdFormatItalic />
             </div>
             <div
-                onClick={()=>handleTextEdit("textTransform", "uppercase", "lowercase")}>
+                onClick={ ()=>handleTextEdit("textTransform", "uppercase", "lowercase") }>
                 <MdFontDownload />
             </div>
-            <div onClick={()=>handleTextEdit("transform", "rotateX(180deg)", "rotateX(360deg)")}>
+            <div onClick={ ()=>handleTextEdit("transform", "rotateX(180deg)", "rotateX(360deg)") }>
                 <MdImportExport />
             </div>
         </div>
