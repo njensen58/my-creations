@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+nav {
+    height: 40px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: lighter;
+    font-size: 20px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    font-color: #ddd;
+}
+
+nav > a {
+    text-style: none;
+    color: #777;
+}
+
+nav > a:visited,
+nav > a:active {
+    color: #777;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.toolsContainer {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 3px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toolsContainer > div {
+    margin: 10px;
+}
+
+h3 {
+    font-family: sans-serif;
+    font-weight: lighter;
+    margin: 10px;
+    font-size: 28px;
+    border: 2px solid black;
+    padding: 20px;
+    font-size: 40px;
+    letter-spacing: 2px;
+    width: 350px;
+    text-align: center;
+    overflow-x: scroll;
+    border-radius: 5px;
+}
+
+.textTransformBtns {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.textTransformBtns > div {
+    height: 50px;
+    width: 50px;
+    border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.form {
+
+}
+
+button {
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 3px;
+}

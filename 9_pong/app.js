@@ -31,14 +31,15 @@ class Player {
         this.x = x;
         this.y = y;
     }
+
     render() {
         ctx.beginPath();
         ctx.fillStyle = 'navy';
-
         ctx.rect(this.x, this.y, 15, 75);
         ctx.fill();
         ctx.closePath();
     }
+
     moveDown() {
         if (this.y < canvas.height - 70) {
             this.y+=20;
@@ -46,6 +47,7 @@ class Player {
             player2Axis.y = this.y;
         }
     }
+
     moveUp() {
         if (this.y > 0) {
             this.y-=20;
@@ -53,6 +55,7 @@ class Player {
             player2Axis.y = this.y;
         }
     }
+
 }
 
 class Ball {
@@ -63,8 +66,8 @@ class Ball {
         this.movingUp = movingUp;
         this.speed = speed;
     }
-    move()  {
 
+    move()  {
         // Handle x movement of ball //
         if(this.x > 0 && !this.movingRight){
             this.x-=this.speed
@@ -124,6 +127,7 @@ class Ball {
         ctx.fill();
         ctx.closePath();
     }
+
 }
 
 
