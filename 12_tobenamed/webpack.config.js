@@ -1,14 +1,12 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin")
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
-
-// entry and output will default to these settings going forward, so not necessary to state //
 
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
     },
     module: {
         rules: [
@@ -18,16 +16,16 @@ module.exports = {
                 use: { loader: "babel-loader" }
             },
             {
-                test: /\.html$/,
-                use: [
-                    { loader: "html-loader" }
-                ]
-            },
-            {
                 test: /\.css$/,
                 use: [
                     { loader: "style-loader" },
                     { loader: "css-loader" }
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    { loader: "html-loader" }
                 ]
             },
             {
@@ -53,4 +51,4 @@ module.exports = {
             filename: './src/css/style.css'
         })
     ]
-};
+}
