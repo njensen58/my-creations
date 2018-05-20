@@ -1,0 +1,27 @@
+{
+    "mobileMenu": {
+        "part1": [
+            { "text": "Home" },
+            { "text": "Profile", "icon": "user" },
+            { "text": "Trips", "icon": "briefcase" },
+            { "text": "Messages", "icon": "comment" },
+            { "text": "Wish Lists", "icon": "heart" },
+            { "text": "InviteFriends", "icon": "gift" },
+            { "text": "Refer Hosts", "icon": "gift" }
+        ],
+        "part2": [
+            { "text": "Airbnb for Work" }
+        ],
+        "part3": [
+            { "text": "Host a home", "subText": "Earn up to $1,349 a month" },
+            { "text": "Host an experience" }
+        ],
+        "part4": [
+            { "text": "Help" },
+            { "text": "Log Out"}
+        ]
+    },
+    "mobileInputBoxMenu": {
+
+    }
+}
