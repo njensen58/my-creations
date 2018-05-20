@@ -1,0 +1,46 @@
+.explore-container {
+    height: 250px;
+    width: 100%;
+}
+
+.explore-container h1 {
+    margin-left: 30px;
+    margin-top: 10px;
+    font-size: 24px;
+    color: #444;
+}
+
+.explore-panels-container {
+    height: 170px;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 20px;
+}
+
+.explore-card {
+    height: 140px;
+    width: 140px;
+    box-shadow: -1px 1px 3px 0px rgba(0, 0, 0, .2);
+    margin: 5px 10px;
+    border-radius: 3px;
+}
+
+.explore-card:hover {
+    cursor: pointer;
+}
+
+.explore-card img {
+    width: 100%;
+    height: 60%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.explore-card h3 {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: lighter;
+    color: #3339;
+}

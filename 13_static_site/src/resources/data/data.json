@@ -13,7 +13,7 @@
             { "text": "Airbnb for Work" }
         ],
         "part3": [
-            { "text": "Host a home", "subText": "Earn up to $1,349 a month" },
+            { "text": "Host a home", "subText": "Earn up to $1,349 a month", "icon": "home" },
             { "text": "Host an experience" }
         ],
         "part4": [
@@ -21,7 +21,11 @@
             { "text": "Log Out"}
         ]
     },
-    "mobileInputBoxMenu": {
-
+    "homeSections": {
+        "explore": [
+            { "type": "Homes", "imgType": "home" },
+            { "type": "Experiences", "imgType": "experience" },
+            { "type": "Restaurants", "imgType": "restaurant" }
+        ]
     }
 }

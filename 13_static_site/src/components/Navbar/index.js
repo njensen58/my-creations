@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Icon from '../Icon';
-import SearchMenu from '../SearchMenu';
+import SearchMenu from './SearchMenu';
 import NavMenu from './NavMenu';
 import logo from '../../resources/icons/logo.png';
 import FaAngleDown from 'react-icons/lib/fa/angle-down';
 import MdSearch from 'react-icons/lib/md/search';
-import menuData from '../../resources/data/menuData.json';
+import menuData from '../../resources/data/data.json';
 import './navStyle.css';
 
 
@@ -35,6 +35,8 @@ export default class Navbar extends Component {
 
     handleChange = (e) => { this.setState({ userInput: e.target.value }) }
 
+    handlePopOver = (e) => { this.setState(prevState => ({ inputPopOver: !prevState.inputPopOver }))}
+
     render() {
         return (
             <div className="nav-container">
@@ -49,15 +51,19 @@ export default class Navbar extends Component {
                 </div>
                {/* Toggle the search menu*/}
                { this.state.inputPopOver
-                    ? <SearchMenu />
+                    ? <SearchMenu
+                            value={ this.state.userInput }
+                            handleChange={ this.handleChange }
+                            handleToggle={ this.handlePopOver }/>
                     : <div className="search">
                         <MdSearch className="search-icon"/>
                         <input
                             type="search"
                             className="searchInput"
                             placeholder='Try "Costa de Valencia"'
-                            value={ this.state.userInput }
-                            onChange={ this.handleChange }/>
+                            value=""
+                            onClick={ this.handlePopOver }
+                            />
                       </div>
                 }
                 {/* Toggle the Nav menu */}

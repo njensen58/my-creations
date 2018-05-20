@@ -1,0 +1,24 @@
+.search-menu-flex {
+    display: flex;
+    justify-content: center;
+}
+
+.search-menu-container {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100vw;
+    height: 400px;
+    background-color: white;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.close-search {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    font-size: 18px;
+    font-weight: lighter;
+}

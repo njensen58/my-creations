@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './iconStyle.css';
 
 const Icon = ({ icon, menuIconDown, visible, handleDropDown }) => {
@@ -28,6 +29,13 @@ const Icon = ({ icon, menuIconDown, visible, handleDropDown }) => {
             </div>
         </div>
     )
+}
+
+Icon.propTypes = {
+    icon: PropTypes.string,
+    menuIconDown: PropTypes.func,
+    visible: PropTypes.bool,
+    handleDropDown: PropTypes.func
 }
 
 export default Icon;
