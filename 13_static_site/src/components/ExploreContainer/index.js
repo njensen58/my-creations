@@ -18,7 +18,10 @@ export default class ExploreContainer extends Component {
                 <h1>Explore Airbnb</h1>
                 <div className="explore-panels-container">
                     { this.state.data.map((explore, i) =>
-                        <ExploreCard key={explore.type + i} type={ explore.type } imgType={ explore.imgType }/>
+                        <ExploreCard
+                            key={explore.type + i} 
+                            type={ explore.type } 
+                            imgType={ explore.imgType }/>
                     )}
                 </div>
             </div>

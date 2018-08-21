@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ExploreContainer from '../ExploreContainer';
+import PromoContainer from '../PromoContainer';
 import './homeStyle.css';
+
 
 
 export default class Home extends Component {
@@ -9,7 +11,11 @@ export default class Home extends Component {
         return (
             <div className="home-outer-div">
                 <ExploreContainer />
-                HOME PAGE
+                <PromoContainer
+                        mainTitle={"Introducing AirBnB Plus"}
+                        imgText={"A new selection of homes verified for quality & comfort."}
+                        imgBtnText={"Explore Airbnb Plus homes"}
+                        icon={"A plus"}/>
             </div>
         )
     }

@@ -8,18 +8,18 @@ const NavMenu = ({ data, visible }) => {
 
 
     return (
-        <div className="navmenu-container" >
+        <div style={{height: visible ? '100vh' : '0', transition: '.5'}} className="navmenu-container" >
             <div>
-                { part1.map((item, i) => <MenuItem key={item+i} text={item.text} subText={item.subText} icon={item.icon}/>) }
+                { part1.map((item, i) => <MenuItem key={item+i} text={ item.text } subText={ item.subText } icon={ item.icon }/>) }
             </div>
             <div>
-                { part2.map((item, i) => <MenuItem key={item+i} text={item.text} subText={item.subText} icon={item.icon}/>) }
+                { part2.map((item, i) => <MenuItem key={item+i} text={ item.text } subText={ item.subText } icon={ item.icon }/>) }
             </div>
             <div>
-                { part3.map((item, i) => <MenuItem key={item+i} text={item.text} subText={item.subText} icon={item.icon}/>) }
+                { part3.map((item, i) => <MenuItem key={item+i} text={ item.text } subText={ item.subText } icon={ item.icon }/>) }
             </div>
             <div>
-                { part4.map((item, i) => <MenuItem key={item+i} text={item.text} subText={item.subText} icon={item.icon}/>) }
+                { part4.map((item, i) => <MenuItem key={item+i} text={ item.text } subText={ item.subText } icon={ item.icon }/>) }
             </div>
         </div>
     )

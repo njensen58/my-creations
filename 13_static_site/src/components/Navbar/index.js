@@ -35,7 +35,7 @@ export default class Navbar extends Component {
 
     handleChange = (e) => { this.setState({ userInput: e.target.value }) }
 
-    handlePopOver = (e) => { this.setState(prevState => ({ inputPopOver: !prevState.inputPopOver }))}
+    handlePopOver = () => { this.setState(prevState => ({ inputPopOver: !prevState.inputPopOver }))}
 
     render() {
         return (

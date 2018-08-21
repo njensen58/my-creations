@@ -5,9 +5,10 @@
 
 .explore-container h1 {
     margin-left: 30px;
-    margin-top: 10px;
+    margin-top: 25px;
     font-size: 24px;
     color: #444;
+    font-weight: 600;
 }
 
 .explore-panels-container {
@@ -40,7 +41,8 @@
 
 .explore-card h3 {
     padding: 10px;
-    font-size: 16px;
-    font-weight: lighter;
-    color: #3339;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: .5px;
 }
