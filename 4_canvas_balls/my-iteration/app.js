@@ -4,7 +4,7 @@ let scoreDisplay = document.getElementById('score-span');
 let clickSound = document.getElementById('sound');
 let soundBtn = document.getElementById('img-icon');
 
-
+// . Make it work this time man!
 discoBtn.addEventListener('click', () => colorSwitch = !colorSwitch);
 soundBtn.addEventListener('click', () =>  {
     // turn on/off sound and darken/brigthen sound button.
@@ -12,6 +12,7 @@ soundBtn.addEventListener('click', () =>  {
     sound ? soundBtn.classList.remove('active') : soundBtn.classList.add('active');
 });
 
+// Yeah make it work!
 let mouseX, mouseY, goalX, goalY;
 let colorSwitch = true;
 let score;
