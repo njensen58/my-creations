@@ -1,0 +1,12 @@
+{
+  "name": "4_canvas_balls",
+  "version": "1.0.0",
+  "description": "This can be played with by visiting: https://canvasballs.surge.sh .",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
