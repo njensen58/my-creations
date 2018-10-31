@@ -5,6 +5,9 @@ let clickSound = document.getElementById('sound');
 let soundBtn = document.getElementById('img-icon');
 
 
+/*
+  Great job and organization!
+*/
 discoBtn.addEventListener('click', () => colorSwitch = !colorSwitch);
 soundBtn.addEventListener('click', () =>  {
     // turn on/off sound and darken/brigthen sound button.
@@ -32,6 +35,11 @@ let sound = true;
     goalX = Math.floor(Math.random() * ((canvas.width - 30) - 30) + 30)
     goalY = Math.floor(Math.random() * ((canvas.height - 30) - 30) + 30)
 
+
+/*
+  Make sure you declare all of your variables using var, let, or const
+  x and y below are not declared.
+*/
 
 // Randomly draw a black dot (goal)
 const createGoal = () => {
