@@ -4,7 +4,9 @@ let scoreDisplay = document.getElementById('score-span');
 let clickSound = document.getElementById('sound');
 let soundBtn = document.getElementById('img-icon');
 
-
+/*
+  Great Job!  Great organization
+*/
 discoBtn.addEventListener('click', () => colorSwitch = !colorSwitch);
 soundBtn.addEventListener('click', () =>  {
     // turn on/off sound and darken/brigthen sound button.
@@ -32,6 +34,11 @@ let sound = true;
     goalX = Math.floor(Math.random() * ((canvas.width - 30) - 30) + 30)
     goalY = Math.floor(Math.random() * ((canvas.height - 30) - 30) + 30)
 
+/* 
+  Below you did not declare 'x' and 'y'.  It is bad practice
+  to not declare variables with var, let, or const.  If undeclared
+  they are automatically declared in the global scope of your program.
+*/
 
 // Randomly draw a black dot (goal)
 const createGoal = () => {
